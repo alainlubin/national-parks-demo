@@ -65,6 +65,17 @@ There is also an `red-index.html` file in the root of the repo that updates the 
   `hab config apply haproxy.default $(date +%s) haproxy.toml`
 12. Run `sup-log` to see the output of the supervisor
 
+You should now be able to hit the front end of _updated_the national-parks site as follows:
+
+Directly - http://localhost:8080/national-parks
+HAProxy - http://localhost:8085/national-parks
+You can also view the admin console for HAProxy to see how the webserver was added dynamically to the load balancer:
+
+http://localhost:8000/haproxy-stats
+
+username: admin
+password: password
+
 
 ## Terraform
 Included in the repo is terraform code for launching the application in AWS and Google Kubernetes Engine. Provision either AWS, GKE, or both, and then you can watch Habitat update across cloud deployments. 
