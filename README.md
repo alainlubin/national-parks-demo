@@ -45,7 +45,7 @@ password: password
 ```
 
 ### Build a new version of the application
-There is also an `red-index.html` file in the root of the repo that updates the map of the National-Parks app to use red pins and colored map (_Note_: the blue-index.html is what used to display for the local verision used in the previous steps. This can be used to demonstrate the package promotion capabilities of Habitat. 
+There is also an `red-index.html` file in the root of the repo that updates the map of the National-Parks app to use red pins and colored map (_Note_: the blue-index.html is what was used to display for the local version used in the previous steps. This can be used to demonstrate the package promotion capabilities of Habitat. 
 
 1. create a new feature branch - `git checkout -b update_homepage`
 2. Bump the `pkg_version` in `habitat/plan.sh`
