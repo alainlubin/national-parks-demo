@@ -45,13 +45,25 @@ password: password
 ```
 
 ### Build a new version of the application
-There is also an `index.html` file in the root of the repo that updates the map of the National-Parks app to use red pins and colored map. This can be used to demonstrate the package promotion capabilities of Habitat. 
+There is also an `red-index.html` file in the root of the repo that updates the map of the National-Parks app to use red pins and colored map(Note: the blue-index.html is what used to display for the local verision used in the previous steps. This can be used to demonstrate the package promotion capabilities of Habitat. 
 
 1. create a new feature branch - `git checkout -b update_homepage`
 2. Bump the `pkg_version` in `habitat/plan.sh`
 3. Overwrite `src/main/webapp/index.html` with the contents of the `red-index.html` in the root directory _NOTE: the index.html has a version number hard coded on line 38. Update that to your version number if you want it to match.
 4. `hab studio enter` 
 5. `build`
+6. `source results/last_build.env`
+7. Load `core/mongodb` package from the public depot:  
+  `hab svc load core/mongodb`
+8. Override the default configuration of mongodb:
+   `hab config apply mongodb.default $(date +%s) mongo.toml`
+9. Load the most recent build of national-parks: 
+   `hab svc load $pkg_ident --bind database:mongodb.default`
+10. Load `core/haproxy` from the public depot:
+  `hab svc load core/haproxy --bind backend:national-parks.default`
+11. Override the default configuration of HAProxy:
+  `hab config apply haproxy.default $(date +%s) haproxy.toml`
+12. Run `sup-log` to see the output of the supervisor
 
 
 ## Terraform
