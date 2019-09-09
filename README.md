@@ -65,7 +65,7 @@ There is also an `red-index.html` file in the root of the repo that updates the 
   `hab config apply haproxy.default $(date +%s) haproxy.toml`
 12. Run `sup-log` to see the output of the supervisor
 
-You should now be able to hit the front end of _updated_ national-parks site as follows:
+You should now be able to hit the front end of the _updated_ national-parks site as follows:
 
 Directly - http://localhost:8080/national-parks
 HAProxy - http://localhost:8085/national-parks
