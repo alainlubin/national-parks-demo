@@ -1,8 +1,7 @@
 trigger:
   - master
   
-  stages:
-  
+stages:
   - stage: Build
     jobs:
     - job: plan
