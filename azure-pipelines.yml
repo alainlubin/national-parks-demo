@@ -4,7 +4,7 @@ trigger:
 stages:
   - stage: Build
     jobs:
-    - job: plan
+    - job: Build_to_Dev
       pool:
         # If you are building a Windows package, you'll need to swap this to a windows image.
         # name: Hosted VS2017
@@ -31,7 +31,7 @@ stages:
   
   - stage: Publish_Dev
     jobs:
-    - deployment: plan
+    - deployment: Promote_to_Dev
       pool:
         vmImage: 'ubuntu-latest'
       environment: 'dev'
@@ -60,7 +60,7 @@ stages:
   
   - stage: Promote_Stg
     jobs:
-    - deployment: plan
+    - deployment: Promote_to_Stage
       pool:
         vmImage: 'ubuntu-latest'
       environment: 'stage'
@@ -82,7 +82,7 @@ stages:
                 HAB_LICENSE: accept-no-persist
   - stage: Promote_Prod
     jobs:
-    - deployment: plan
+    - deployment: Promote_to_Prod
       pool:
         vmImage: 'ubuntu-latest'
       environment: 'prod'
