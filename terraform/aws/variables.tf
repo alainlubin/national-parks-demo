@@ -146,3 +146,10 @@ variable "event-stream-environment" {
   default = "demo"
 }
 
+variable "event-stream-enabled" {
+  default = "true"
+}
+
+variable "disable_event_tls" {
+  default = "true"
+}
